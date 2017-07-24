@@ -1,0 +1,2 @@
+Sensor|FW_version|HW_version|Sensor|FW_version|HW_version|Sensor|FW_version|HW_version|
+<YEI3Space WL:12000865>|17Mar2015N37|TSS-WL                  v2.0.0  |<YEI3Space WL:1200085D>|17Mar2015N37|TSS-WL                  v2.0.0  |<YEI3Space WL:1200085E>|17Mar2015N37|TSS-WL                  v2.0.0  |<YEI3Space WL:12000860>|17Mar2015N37|TSS-WL                  v2.0.0  |<YEI3Space WL:12000857>|17Mar2015N37|TSS-WL                  v2.0.0  |<YEI3Space WL:1200085A>|24Nov2014P52|TSS-WL                  v2.0.0  |<YEI3Space WL:1200085B>|17Mar2015N37|TSS-WL                  v2.0.0  |
