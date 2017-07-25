@@ -67,6 +67,31 @@ device_list = ts_api.getComPorts()
 
 all_list = []
 sensor_list = []
+chosen_sensor_list = []
+
+l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= True
+hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = True
+r_upper_leg = r_lower_leg = r_foot = True
+
+sensorID_string_to_sensorName = {
+    "'"+str("<YEI3Space WL:1200085A>")+"'": l_shoulder,
+    "'"+str("<YEI3Space WL:1200085B>")+"'": r_shoulder,
+    "'"+str("<YEI3Space WL:1200085C>")+"'": l_upper_arm,
+    "'"+str("<YEI3Space WL:1200085D>")+"'": l_lower_arm,
+    "'"+str("<YEI3Space WL:1200085E>")+"'": l_hand,
+    "'"+str("<YEI3Space WL:1200085F>")+"'": r_upper_arm,
+    "'"+str("<YEI3Space WL:12000857>")+"'": head,
+    "'"+str("<YEI3Space WL:12000858>")+"'": hips,
+    "'"+str("<YEI3Space WL:12000859>")+"'": chest,
+    "'"+str("<YEI3Space WL:12000860>")+"'": r_lower_arm,
+    "'"+str("<YEI3Space WL:12000861>")+"'": r_hand,
+    "'"+str("<YEI3Space WL:12000862>")+"'": l_upper_leg,
+    "'"+str("<YEI3Space WL:12000863>")+"'": l_lower_leg,
+    "'"+str("<YEI3Space WL:12000864>")+"'": l_foot,
+    "'"+str("<YEI3Space WL:12000865>")+"'": r_upper_leg,
+    "'"+str("<YEI3Space WL:12000866>")+"'": r_lower_leg,
+    "'"+str("<YEI3Space WL:12000867>")+"'": r_foot
+    }
 for device_port in device_list:
     com_port, friendly_name, device_type = device_port
     device = None
@@ -82,7 +107,7 @@ for device_port in device_list:
         device = ts_api.TSDLSensor(com_port=com_port)
     elif device_type == "BT":
         device = ts_api.TSBTSensor(com_port=com_port)
-    
+  
     if device is not None:
         all_list.append(device)
         if device_type != "DNG":
@@ -92,26 +117,28 @@ for device_port in device_list:
                 sens = device[i]
                 if sens is not None:
                     sensor_list.append(sens)
+                    if sensorID_string_to_sensorName.get("'"+str(sens)+"'") is True:
+                        chosen_sensor_list.append(sens)
 
 ## The YEI 3-Space Python API has a global broadcaster called global_broadcaster
 ## which is an instance of Broadcaster
-ts_api.global_broadcaster.setStreamingTiming(   interval=1000000,
+ts_api.global_broadcaster.setStreamingTiming(   interval=10000,
                                                 duration=4294967295,
                                                 delay=200000,
                                                 delay_offset=0,
-                                                filter=sensor_list)
+                                                filter=chosen_sensor_list)
 ts_api.global_broadcaster.setStreamingSlots(
                                         slot0='getRawAccelerometerData',
                                         slot1='getBatteryPercentRemaining',
-                                        filter=sensor_list)
-ts_api.global_broadcaster.startStreaming(filter=sensor_list)
-ts_api.global_broadcaster.startRecordingData(filter=sensor_list)
-start_time = time.clock()
-while time.clock() - start_time < 5:
-    with open('workfile.txt', 'w+') as f:
-        f.write(str(ts_api.global_broadcaster.writeRead('_getStreamingBatch')))
-    f.close()
-time.sleep(5)
+                                        filter=chosen_sensor_list)
+ts_api.global_broadcaster.startStreaming(filter=chosen_sensor_list)
+ts_api.global_broadcaster.startRecordingData(filter=chosen_sensor_list)
+##start_time = time.clock()
+##while time.clock() - start_time < 5:
+##    with open('workfile.txt', 'w+') as f:
+##        f.write(str(ts_api.global_broadcaster.writeRead('_getStreamingBatch')))
+##    f.close()
+time.sleep(10)
 ts_api.global_broadcaster.stopRecordingData(filter=sensor_list)
 ts_api.global_broadcaster.stopStreaming(filter=sensor_list)
 for sensor in sensor_list:
