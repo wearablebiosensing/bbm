@@ -8,7 +8,9 @@ stream_inlet = StreamInlet(fNIR_streams[0])
 
 while True:
     sample, timestamp = stream_inlet.pull_sample()
-    print(timestamp, sample)
-    print("\n")
+    with open('0workfile.txt', 'a') as f:
+        f.write(timestamp, sample)
+        f.write("\n")
+    f.close()
 
 print("...Fin.")
