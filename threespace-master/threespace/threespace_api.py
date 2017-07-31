@@ -898,7 +898,6 @@ class _TSSensor(_TSBase):
         'clearOrthoCalibrationData': (0xaf, 0, None, 0, None, 1),
         'setSleepMode': (0xe3, 0, None, 1, '>B', 1),
         'getSleepMode': (0xe4, 1, '>B', 0, None, 1),
-        'getSerialNumber': (0xed, 4, '>I', 0, None, 1),
         'setJoystickEnabled': (0xf0, 0, None, 1, '>B', 1),
         'setMouseEnabled': (0xf1, 0, None, 1, '>B', 1),
         'getJoystickEnabled': (0xf2, 1, '>B', 0, None, 1),
@@ -1004,8 +1003,9 @@ class _TSSensor(_TSBase):
         self.stream_last_data = data
         if self.record_data:
             self.stream_data.append(data)
-            with open('000workfile.txt', 'a') as f:
-                f.write(str(data)+"\n")
+            with open('00workfile.txt', 'a') as f:
+                if len(str(data)) > 5:
+                    f.write(str(data)+"\n")
             f.close()
         if self.callback_func:
             self.callback_func(data)
@@ -1892,7 +1892,7 @@ class _TSSensor(_TSBase):
         return data
     
     ##  66(0x42)
-    def getRawAccelerometerData(self, timestamp=False):
+    def getRawAccelerometerData(self, timestamp=True):
         fail_byte, t_stamp, data = self.writeRead('getRawAccelerometerData')
         if timestamp:
             return (data, t_stamp)
