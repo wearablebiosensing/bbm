@@ -1003,7 +1003,7 @@ class _TSSensor(_TSBase):
         self.stream_last_data = data
         if self.record_data:
             self.stream_data.append(data)
-            with open('00workfile.txt', 'a') as f:
+            with open('mocapData.txt', 'a') as f:
                 if len(str(data)) > 5:
                     f.write(str(data)+"\n")
             f.close()
