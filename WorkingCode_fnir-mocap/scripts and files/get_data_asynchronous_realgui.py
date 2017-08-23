@@ -270,8 +270,8 @@ def PopUp():
     var18=IntVar()
     
     
-    c1=Checkbutton(popup,text="l_shoulder",variable=l_shoulder, \
-                   onvalue=True,offvalue=False)
+    c1=Checkbutton(popup,text="l_shoulder",variable=var1, \
+                   onvalue=1,offvalue=0)
     c1.grid(row=1,column=0)
     c2=Checkbutton(popup,text="r_shoulder",variable=var2, \
                                    onvalue=1,offvalue=0)
