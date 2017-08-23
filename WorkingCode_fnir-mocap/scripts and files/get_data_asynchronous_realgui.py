@@ -274,6 +274,9 @@ def PopUp():
                    onvalue=1,offvalue=0)
     if (var1==1):
         l_shoulder = True
+        ls=str("LEFT SHOULDER = TRUE\n")
+        tex.insert(tk.END,ls)
+        tex.see(tk.END)
         return l_shoulder
     c1.grid(row=1,column=0)
 
