@@ -59,35 +59,15 @@ class SimpleTable(tk.Frame):
 ##    app = ExampleApp()
 
 
-def connect():
-    print("its just a test")
-    ################################################################################
-    ################# Second using a broadcaster to get streaming ##################
-    ################# data for every 3-Space Sensor device known ###################
-    ################################################################################
-    print("=============================")
-    print("Broadcaster calls")
-    print("=============================")
-    string=str('Calling Broadcaster..\n')
-    tex.insert(tk.END,string)
-    tex.see(tk.END)
-
-    device_list = ts_api.getComPorts()
-
-    all_list = []
-    sensor_list = []
-    chosen_sensor_list = []
-    
+def sensorID_string_commit():
     global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
     global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
     global r_upper_leg, r_lower_leg, r_foot
 
-    ##l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
-    ##hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = True
-    ##r_upper_leg = r_lower_leg = r_foot = True
-
+    global sensorID_string_to_sensorName
+    
     sensorID_string_to_sensorName = {
-        "'"+str("<YEI3Space WL:1200085A>")+"'": l_shoulder,
+    "'"+str("<YEI3Space WL:1200085A>")+"'": l_shoulder,
         "'"+str("<YEI3Space WL:1200085B>")+"'": r_shoulder,
         "'"+str("<YEI3Space WL:1200085C>")+"'": l_upper_arm,
         "'"+str("<YEI3Space WL:1200085D>")+"'": l_lower_arm,
@@ -104,7 +84,7 @@ def connect():
         "'"+str("<YEI3Space WL:12000865>")+"'": r_upper_leg,
         "'"+str("<YEI3Space WL:12000866>")+"'": r_lower_leg,
         "'"+str("<YEI3Space WL:12000867>")+"'": r_foot
-        }
+    }
     for device_port in device_list:
         com_port, friendly_name, device_type = device_port
         device = None
@@ -132,6 +112,82 @@ def connect():
                         sensor_list.append(sens)
                         if sensorID_string_to_sensorName.get("'"+str(sens)+"'") is True:
                             chosen_sensor_list.append(sens)
+
+
+def connect():
+    print("its just a test")
+    ################################################################################
+    ################# Second using a broadcaster to get streaming ##################
+    ################# data for every 3-Space Sensor device known ###################
+    ################################################################################
+    print("=============================")
+    print("Broadcaster calls")
+    print("=============================")
+    string=str('Calling Broadcaster..\n')
+    tex.insert(tk.END,string)
+    tex.see(tk.END)
+
+    device_list = ts_api.getComPorts()
+
+    all_list = []
+    sensor_list = []
+    chosen_sensor_list = []
+    
+    global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
+    global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
+    global r_upper_leg, r_lower_leg, r_foot
+
+    ##l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
+    ##hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = True
+    ##r_upper_leg = r_lower_leg = r_foot = True
+
+
+#    sensorID_string_to_sensorName = {
+#        "'"+str("<YEI3Space WL:1200085A>")+"'": l_shoulder,
+#        "'"+str("<YEI3Space WL:1200085B>")+"'": r_shoulder,
+#        "'"+str("<YEI3Space WL:1200085C>")+"'": l_upper_arm,
+#        "'"+str("<YEI3Space WL:1200085D>")+"'": l_lower_arm,
+#        "'"+str("<YEI3Space WL:1200085E>")+"'": l_hand,
+#        "'"+str("<YEI3Space WL:1200085F>")+"'": r_upper_arm,
+#        "'"+str("<YEI3Space WL:12000857>")+"'": head,
+#        "'"+str("<YEI3Space WL:12000858>")+"'": hips,
+#        "'"+str("<YEI3Space WL:12000859>")+"'": chest,
+#        "'"+str("<YEI3Space WL:12000860>")+"'": r_lower_arm,
+#        "'"+str("<YEI3Space WL:12000861>")+"'": r_hand,
+#        "'"+str("<YEI3Space WL:12000862>")+"'": l_upper_leg,
+#        "'"+str("<YEI3Space WL:12000863>")+"'": l_lower_leg,
+#        "'"+str("<YEI3Space WL:12000864>")+"'": l_foot,
+#        "'"+str("<YEI3Space WL:12000865>")+"'": r_upper_leg,
+#        "'"+str("<YEI3Space WL:12000866>")+"'": r_lower_leg,
+#        "'"+str("<YEI3Space WL:12000867>")+"'": r_foot
+#        }
+#    for device_port in device_list:
+#        com_port, friendly_name, device_type = device_port
+#        device = None
+#        if device_type == "USB":
+#            device = ts_api.TSUSBSensor(com_port=com_port)
+#        elif device_type == "DNG":
+#            device = ts_api.TSDongle(com_port=com_port)
+#        elif device_type == "WL":
+#            device = ts_api.TSWLSensor(com_port=com_port)
+#        elif device_type == "EM":
+#            device = ts_api.TSEMSensor(com_port=com_port)
+#        elif device_type == "DL":
+#            device = ts_api.TSDLSensor(com_port=com_port)
+#        elif device_type == "BT":
+#            device = ts_api.TSBTSensor(com_port=com_port)
+#        
+#        if device is not None:
+#            all_list.append(device)
+#            if device_type != "DNG":
+#                sensor_list.append(device)
+#            else:
+#                for i in range(6): # Only checking the first six logical indexes
+#                    sens = device[i]
+#                    if sens is not None:
+#                        sensor_list.append(sens)
+#                        if sensorID_string_to_sensorName.get("'"+str(sens)+"'") is True:
+#                            chosen_sensor_list.append(sens)
 
     with open('mocapData.txt', 'w') as f:
         f.write(str(chosen_sensor_list)+'\n\n')
@@ -383,7 +439,7 @@ def PopUp():
 
 
     btn1=Button(popup, text='Apply', command=sensorID_string_to_sensorName )
-    btn1.grid(row=12,column=1)
+    btn1.grid(row=11,column=2)
 
 ##btn1.destroy()
     
