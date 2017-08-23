@@ -14,7 +14,11 @@ global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, he
 global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
 global r_upper_leg, r_lower_leg, r_foot
 
-
+# text box GUI
+tex = Text(master=root)
+tex.pack(side=TOP)
+bop = Frame()
+bop.pack(side=LEFT)
 
 
 #Table Chart
@@ -355,7 +359,7 @@ def PopUp():
     c18.grid(row=10,column=1)
     btn1=Button(popup, text='Apply', command=sensorID_string_to_sensorName )
     btn1.grid(row=12,column=1)
-    popup.destroy()
+    ##popup.destroy()
     
     popup.mainloop()
 
