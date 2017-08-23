@@ -28,9 +28,9 @@ bop.pack(side=LEFT)
 class ExampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
-        t = SimpleTable(self, 10,2)
-        t.pack(side="top", fill="x")
-        t.set(0,0,"IT WORKS")
+        ##t = SimpleTable(self, 10,2)
+        ##t.pack(side="top", fill="x")
+        ##t.set(0,0,"IT WORKS")
 
 class SimpleTable(tk.Frame):
     def __init__(self, parent, rows=10, columns=2):
