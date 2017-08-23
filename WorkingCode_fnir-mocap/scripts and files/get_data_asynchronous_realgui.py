@@ -55,8 +55,8 @@ class SimpleTable(tk.Frame):
         widget = self._widgets[row][column]
         widget.configure(text=value)
 
-if __name__ == "__main__":
-    app = ExampleApp()
+##if __name__ == "__main__":
+##    app = ExampleApp()
 
 
 def connect():
