@@ -400,6 +400,8 @@ disconnectButton=Button(toolbar,text="Disconnect", command=disconnect)
 disconnectButton.pack(side=LEFT, padx=5, pady=50)
 #disconnectButton.config( height = 50, width = 10 )
 toolbar.pack(side=BOTTOM, fill=X)
+SensorButton=Button(toolbar,text="Sensors", command=PopUp)
+SensorButton.pack(side=LEFT, padx=5, pady=50)
 
 device_list = []
 
