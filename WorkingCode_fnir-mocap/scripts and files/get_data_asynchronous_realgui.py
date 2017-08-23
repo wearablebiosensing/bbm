@@ -9,7 +9,7 @@ from threading import Thread
 from pylsl import StreamInlet, resolve_stream
 
 
-
+global all_list, sensor_list, chosen_sensor_list
 global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
 global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
 global r_upper_leg, r_lower_leg, r_foot
@@ -63,7 +63,7 @@ def sensorID_string_commit():
     global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
     global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
     global r_upper_leg, r_lower_leg, r_foot
-
+    global all_list, sensor_list, chosen_sensor_list
     global sensorID_string_to_sensorName
     
     sensorID_string_to_sensorName = {
@@ -129,6 +129,7 @@ def connect():
 
     device_list = ts_api.getComPorts()
 
+    global all_list, sensor_list, chosen_sensor_list
     all_list = []
     sensor_list = []
     chosen_sensor_list = []
@@ -306,7 +307,7 @@ def PopUp():
     global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
     global r_upper_leg, r_lower_leg, r_foot
     
-    
+    global all_list, sensor_list, chosen_sensor_list
     
     var1=IntVar()
     var2=IntVar()
