@@ -272,35 +272,52 @@ def PopUp():
     
     c1=Checkbutton(popup,text="l_shoulder",variable=var1, \
                    onvalue=1,offvalue=0)
+    if (var1==1):
+        l_shoulder = True
+        return l_shoulder
     c1.grid(row=1,column=0)
+
+
     c2=Checkbutton(popup,text="r_shoulder",variable=var2, \
                                    onvalue=1,offvalue=0)
     if (var2==1):
+        r_shoulder = True
         return r_shoulder
     c2.grid(row=1,column=1)
+
     c3=Checkbutton(popup,text="l_upper_arm",variable=var3, \
                        onvalue=1,offvalue=0)
     if (var3==1):
+        l_upper_arm = True
         return l_upper_arm
     c3.grid(row=2,column=0)
+
+
     c4=Checkbutton(popup,text="l_lower_arm",variable=var4, \
                        onvalue=1,offvalue=0)
     if (var4==1):
+        l_lower_arm = True
         return l_lower_arm
     c4.grid(row=3,column=0)
+
     c5=Checkbutton(popup,text="l_hand",variable=var5, \
                onvalue=1,offvalue=0)
     if (var5==1):
+        l_hand = True
         return l_hand
     c5.grid(row=4,column=0)
+
     c6=Checkbutton(popup,text="r_upper_arm",variable=var6, \
                        onvalue=1,offvalue=0)
     if (var6==1):
+        r_upper_arm = True
         return r_upper_arm
     c6.grid(row=2,column=1)
+
     c7=Checkbutton(popup,text="head",variable=var7, \
                        onvalue=1,offvalue=0)
     if (var7==1):
+        head = True
         return head
     c7.grid(row=1,column=2)
     c8=Checkbutton(popup,text="hips",variable=var8, \
