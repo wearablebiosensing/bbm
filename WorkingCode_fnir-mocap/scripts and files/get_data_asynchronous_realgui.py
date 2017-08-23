@@ -362,7 +362,7 @@ def PopUp():
     c18.grid(row=10,column=1)
     btn1=Button(popup, text='Apply', command=sensorID_string_to_sensorName )
     btn1.grid(row=12,column=1)
-    ##popup.destroy()
+    popup.destroy()
     
     popup.mainloop()
 
