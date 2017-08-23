@@ -25,9 +25,9 @@ bop.pack(side=LEFT)
 
 
 #Table Chart
-class ExampleApp(tk.Tk):
-    def __init__(self):
-        tk.Tk.__init__(self)
+##class ExampleApp(tk.Tk):
+    ##def __init__(self):
+        ##tk.Tk.__init__(self)
         ##t = SimpleTable(self, 10,2)
         ##t.pack(side="top", fill="x")
         ##t.set(0,0,"IT WORKS")
