@@ -13,6 +13,11 @@ tex.pack(side=TOP)
 bop = Frame()
 bop.pack(side=LEFT)
 
+global l_shoulder,r_shoulder,l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
+global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foote
+global r_upper_leg, r_lower_leg, r_foot 
+
+
 l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
 hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = False
 r_upper_leg = r_lower_leg = r_foot = False
@@ -154,13 +159,16 @@ def reset():
     tex.see(tk.END)
     return reset
 def PopUp():
-    from Tkinter import*
-    popup = Tk()
+    popup=Tk() 
     popup.geometry('250x400')
     popup.grid()
     popup.title("Sensor Quantity")
     label = Label(popup, text='Display Sensors')
     label.grid()
+
+    global l_shoulder,r_shoulder,l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
+    global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
+    global r_upper_leg, r_lower_leg, r_foot 
 
 
 
@@ -278,7 +286,7 @@ def PopUp():
     c18.grid(row=10,column=1)
     btn1=Button(popup, text='Apply', command=sensorID_string_to_sensorName )
     btn1.grid(row=12,column=1)
-    popup.destroy()
+    btn1.destroy()
  
     popup.mainloop()
     
