@@ -332,108 +332,108 @@ def PopUp():
     c1=Checkbutton(popup,text="l_shoulder",variable=var1, \
                    onvalue=1,offvalue=0)
     if (var1==1):
-        return l_shoulder
+        l_shoulder=True
     c1.grid(row=1,column=0)
 
     c2=Checkbutton(popup,text="r_shoulder",variable=var2, \
                onvalue=1,offvalue=0)
     if (var2==1):
-        return r_shoulder
+        r_shoulder=True
     c2.grid(row=1,column=1)
 
     c3=Checkbutton(popup,text="l_upper_arm",variable=var3, \
                    onvalue=1,offvalue=0)
     if (var3==1):
-        return l_upper_arm
+        l_upper_arm=True
     c3.grid(row=2,column=0)
 
     c4=Checkbutton(popup,text="l_lower_arm",variable=var4, \
                    onvalue=1,offvalue=0)
     if (var4==1):
-        return l_lower_arm
+        l_lower_arm=True
     c4.grid(row=3,column=0)
 
     c5=Checkbutton(popup,text="l_hand",variable=var5, \
                onvalue=1,offvalue=0)
     if (var5==1):
-        return l_hand
+        l_hand=True
     c5.grid(row=4,column=0)
 
     c6=Checkbutton(popup,text="r_upper_arm",variable=var6, \
                    onvalue=1,offvalue=0)
     if (var6==1):
-        return r_upper_arm
+        r_upper_arm=True
     c6.grid(row=2,column=1)
 
     c7=Checkbutton(popup,text="head",variable=var7, \
                 onvalue=1,offvalue=0)
     if (var7==1):
-        return head
+        head=True
     c7.grid(row=1,column=2)
 
     c8=Checkbutton(popup,text="hips",variable=var8, \
                onvalue=1,offvalue=0)
     if (var8==1):
-        return hips
+        hips=True
     c8.grid(row=3,column=2)
 
     c9=Checkbutton(popup,text="chest",variable=var9, \
                    onvalue=1,offvalue=0)
     if (var9==1):
-        return chest
+        chest=True
     c9.grid(row=2,column=2)
 
     c10=Checkbutton(popup,text="r_lower_arm",variable=var10, \
                     onvalue=1,offvalue=0)
     if (var10==1):
-        return r_lower_arm
+        r_lower_arm=True
     c10.grid(row=3,column=1)
 
     c11=Checkbutton(popup,text="r_hand",variable=var11, \
                 onvalue=1,offvalue=0)
     if (var11==1):
-        return r_hand
+        r_hand=True
     c11.grid(row=4,column=1)
 
     c12=Checkbutton(popup,text="l_upper_leg",variable=var12, \
                     onvalue=1,offvalue=0)
     if (var12==1):
-        return l_upper_leg
+        l_upper_leg=True
     c12.grid(row=6,column=0)
 
     c13=Checkbutton(popup,text="l_lower_leg",variable=var13, \
                 onvalue=1,offvalue=0)
     if (var13==1):
-        return l_lower_leg
+        l_lower_leg=True
     c13.grid(row=7,column=0)
 
     c14=Checkbutton(popup,text="l_foot",variable=var14, \
                 onvalue=1,offvalue=0)
     if (var14==1):
-        return l_foot
+        l_foot=True
     c14.grid(row=8,column=0)
 
     c15=Checkbutton(popup,text="r_upper_leg",variable=var15, \
                     onvalue=1,offvalue=0)
     if (var15==1):
-        return r_upper_leg
+        r_upper_leg=True
     c15.grid(row=6,column=1)
 
     c16=Checkbutton(popup,text="r_lower_leg",variable=var16, \
                     onvalue=1,offvalue=0)
     if (var16==1):
-        return r_lower_leg
+        r_lower_leg=True
     c16.grid(row=7,column=1)
 
     c17=Checkbutton(popup,text="r_foot",variable=var17, \
                 onvalue=1,offvalue=0)
     if (var17==1):
-        return r_foot
+        r_foot=True
     c17.grid(row=8,column=1)
     c18=Checkbutton(popup,text="All", variable=var18, \
                     onvalue=1,offvalue=0, height=5)
     if (var18==1):
-        var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=1
+        var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=True
     elif(var18==0):
         var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=0
     c18.grid(row=10,column=1)
