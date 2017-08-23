@@ -14,6 +14,9 @@ global l_shoulder, r_shoulder, l_upper_arm, l_lower_arm, l_hand, r_upper_arm, he
 global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
 global r_upper_leg, r_lower_leg, r_foot
 
+
+root=Tk()
+
 # text box GUI
 tex = Text(master=root)
 tex.pack(side=TOP)
@@ -363,9 +366,6 @@ def PopUp():
     
     popup.mainloop()
 
-
-#Window
-root=Tk()
 
 #Menu
 menu=Menu(root)
