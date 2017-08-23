@@ -68,144 +68,108 @@ def PopUp():
     label = Label(popup, text='Display Sensors')
     label.grid()
     
-    global l_shoulder,r_shoulder,l_upper_arm, l_lower_arm, l_hand, r_upper_arm, head
-    global hips, chest, r_lower_arm, r_hand, l_upper_leg, l_lower_leg, l_foot
-    global r_upper_leg, r_lower_leg, r_foot
+    global var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12,  var13,  var14,  var15,  var16,  var17, var18
     
-    global all_list, sensor_list, chosen_sensor_list
-    l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
-    hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = False
-    r_upper_leg = r_lower_leg = r_foot = False
-    
-    var1=IntVar()
-    var2=IntVar()
-    var3=IntVar()
-    var4=IntVar()
-    var5=IntVar()
-    var6=IntVar()
-    var7=IntVar()
-    var8=IntVar()
-    var9=IntVar()
-    var10=IntVar()
-    var11=IntVar()
-    var12=IntVar()
-    var13=IntVar()
-    var14=IntVar()
-    var15=IntVar()
-    var16=IntVar()
-    var17=IntVar()
-    var18=IntVar()
+    var1=tk.IntVar()
+    var2=tk.IntVar()
+    var3=tk.IntVar()
+    var4=tk.IntVar()
+    var5=tk.IntVar()
+    var6=tk.IntVar()
+    var7=tk.IntVar()
+    var8=tk.IntVar()
+    var9=tk.IntVar()
+    var10=tk.IntVar()
+    var11=tk.IntVar()
+    var12=tk.IntVar()
+    var13=tk.IntVar()
+    var14=tk.IntVar()
+    var15=tk.IntVar()
+    var16=tk.IntVar()
+    var17=tk.IntVar()
+    var18=tk.IntVar()
     
     c18=tk.Checkbutton(popup,text="All", variable=var18, \
                     onvalue=1,offvalue=0, height=5)
-    if (var18.get()):
-        var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=1
     c18.grid(row=10,column=1)
     
     c1=tk.Checkbutton(popup,text="l_shoulder",variable=var1, \
                    onvalue=1,offvalue=0)
-
-
-    if (var1.get()):
-        l_shoulder=True
     c1.grid(row=1,column=0)
 
     c2=tk.Checkbutton(popup,text="r_shoulder",variable=var2, \
                onvalue=1,offvalue=0)
-    if (var2.get()):
-        r_shoulder=True
     c2.grid(row=1,column=1)
 
     c3=tk.Checkbutton(popup,text="l_upper_arm",variable=var3, \
                    onvalue=1,offvalue=0)
-    if (var3.get()):
-        l_upper_arm=True
+    
     c3.grid(row=2,column=0)
 
     c4=tk.Checkbutton(popup,text="l_lower_arm",variable=var4, \
                    onvalue=1,offvalue=0)
-    if (var4.get()):
-        l_lower_arm=True
+    
     c4.grid(row=3,column=0)
 
     c5=tk.Checkbutton(popup,text="l_hand",variable=var5, \
                onvalue=1,offvalue=0)
-    if (var5.get()):
-        l_hand=True
+    
     c5.grid(row=4,column=0)
 
     c6=tk.Checkbutton(popup,text="r_upper_arm",variable=var6, \
                    onvalue=1,offvalue=0)
-    if (var6.get()):
-        r_upper_arm=True
+    
     c6.grid(row=2,column=1)
 
     c7=tk.Checkbutton(popup,text="head",variable=var7, \
                 onvalue=1,offvalue=0)
-    if (var7.get()):
-        head=True
     c7.grid(row=1,column=2)
 
     c8=tk.Checkbutton(popup,text="hips",variable=var8, \
                onvalue=1,offvalue=0)
-    if (var8.get()):
-        hips=True
+    
     c8.grid(row=3,column=2)
 
     c9=tk.Checkbutton(popup,text="chest",variable=var9, \
                    onvalue=1,offvalue=0)
-    if (var9.get()):
-        chest=True
     c9.grid(row=2,column=2)
 
     c10=tk.Checkbutton(popup,text="r_lower_arm",variable=var10, \
                     onvalue=1,offvalue=0)
-    if (var10.get()):
-        r_lower_arm=True
     c10.grid(row=3,column=1)
 
     c11=tk.Checkbutton(popup,text="r_hand",variable=var11, \
                 onvalue=1,offvalue=0)
-    if (var11.get()):
-        r_hand=True
     c11.grid(row=4,column=1)
 
     c12=tk.Checkbutton(popup,text="l_upper_leg",variable=var12, \
                     onvalue=1,offvalue=0)
-    if (var12.get()):
-        l_upper_leg=True
     c12.grid(row=6,column=0)
 
     c13=tk.Checkbutton(popup,text="l_lower_leg",variable=var13, \
                 onvalue=1,offvalue=0)
-    if (var13.get()):
-        l_lower_leg=True
+    
     c13.grid(row=7,column=0)
 
     c14=tk.Checkbutton(popup,text="l_foot",variable=var14, \
                 onvalue=1,offvalue=0)
-    if (var14.get()):
-        l_foot=True
+    
     c14.grid(row=8,column=0)
 
     c15=tk.Checkbutton(popup,text="r_upper_leg",variable=var15, \
                     onvalue=1,offvalue=0)
-    if var15.get():
-        r_upper_leg=True
+    
     c15.grid(row=6,column=1)
 
     c16=tk.Checkbutton(popup,text="r_lower_leg",variable=var16, \
                     onvalue=1,offvalue=0)
-    if var16.get():
-        r_lower_leg=True
+    
     c16.grid(row=7,column=1)
 
     c17=tk.Checkbutton(popup,text="r_foot",variable=var17, \
                 onvalue=1,offvalue=0)
-    if var17.get():
-        r_foot=True
-    c17.grid(row=8,column=1)
     
+    c17.grid(row=8,column=1)
 
     btn1=Button(popup, text='Apply', command=sensorID_string_commit )
     btn1.grid(row=11,column=2)
@@ -220,6 +184,50 @@ def sensorID_string_commit():
     global r_upper_leg, r_lower_leg, r_foot
     global all_list, sensor_list, chosen_sensor_list
     global sensorID_string_to_sensorName
+    global var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12,  var13,  var14,  var15,  var16,  var17, var18
+    
+    
+    l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= False
+    hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = False
+    r_upper_leg = r_lower_leg = r_foot = False
+
+    if var18.get():
+        var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=1
+    if var1.get():
+        l_shoulder=True
+    if var2.get():
+        r_shoulder=True
+    if var3.get():
+        l_upper_arm=True
+    if var4.get():
+        l_lower_arm=True
+    if var5.get():
+        l_hand=True
+    if var6.get():
+        r_upper_arm=True
+    if var7.get():
+        head=True
+    if var8.get():
+        hips=True
+    if var9.get():
+        chest=True
+    if var10.get():
+        r_lower_arm=True
+    if var11.get():
+        r_hand=True
+    if var12.get():
+        l_upper_leg=True
+    if var13.get():
+        l_lower_leg=True
+    if var14.get():
+        l_foot=True
+    if var15.get():
+        r_upper_leg=True
+    if var16.get():
+        r_lower_leg=True
+    if var17.get():
+        r_foot=True
+
 
     device_list = ts_api.getComPorts()
 
