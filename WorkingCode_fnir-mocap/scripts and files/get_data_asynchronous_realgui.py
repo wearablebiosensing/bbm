@@ -380,9 +380,12 @@ def PopUp():
     elif(var18==0):
         var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17=0
     c18.grid(row=10,column=1)
+
+
     btn1=Button(popup, text='Apply', command=sensorID_string_to_sensorName )
     btn1.grid(row=12,column=1)
-    btn1.destroy()
+
+##btn1.destroy()
     
     popup.mainloop()
 
