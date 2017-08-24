@@ -26,32 +26,8 @@ class GUI(tk.Tk):
         
         
         #Status Bar
-        status= Label(root,text=process, bd=1, relief=SUNKEN, anchor=W)
+        status= Label(self,text=process, bd=1, relief=SUNKEN, anchor=W)
         status.pack(side=BOTTOM, fill=X)
-    
-        #Tool Bar
-        toolbar= Frame(self)
-        findmocapButton=Button(toolbar,text="Find Mocap Sensors", command=getSensors)
-        findmocapButton.pack(side=LEFT, padx=5, pady=50)
-        SensorButton=Button(toolbar,text="Choose Mocap Sensors", command=PopUp)
-        SensorButton.pack(side=LEFT, padx=5, pady=50)
-        mocapconnectButton=Button(toolbar,text="Mocap Connect", command=mocapconnect)
-        mocapconnectButton.pack(side=LEFT, padx=5, pady=50)
-        mocapdisconnectButton=Button(toolbar,text="Mocap Disconnect", command=mocapdisconnect)
-        disconnectButton.pack(side=LEFT, padx=5, pady=50)
-        fnirconnectButton=Button(toolbar,text="fNIR Connect", command=fnirconnect)
-        fnirconnectButton.pack(side=LEFT, padx=5, pady=50)
-        insertButton = Button(toolbar, text="All Start", command=start)
-        insertButton.pack(side=LEFT, padx=5, pady=50)
-        printButton= Button(toolbar, text="All Stop", command=stop)
-        printButton.pack(side=LEFT, padx=5, pady=50)
-        resetButton=Button(toolbar,text="All Reset", command=reset)
-        resetButton.pack(side=LEFT, padx=5, pady=50)
-        toolbar.pack(side=BOTTOM, fill=X)
-        
-        #root window
-        self.title("Graphical User Interface")
-        self.geometry("900x600")
     
         all_list = []
         sensor_list = []
@@ -85,11 +61,11 @@ class GUI(tk.Tk):
             else:
                 for i in range(6): # Only checking the first six logical indexes
                     sens = device[i]
-                        if sens is not None:
-                            sensor_list.append(sens)
-                            newsensor=str(sens)
-                            tex.insert(tk.END,newsensor)
-                            tex.see(tk.END)
+                    if sens is not None:
+                        sensor_list.append(sens)
+                        new_sensor = str(sens)
+                        tex.insert(tk.END,new_sensor)
+                        tex.see(tk.END)
 
         l_shoulder = r_shoulder = l_upper_arm = l_lower_arm = l_hand = r_upper_arm = head= 0
         hips = chest = r_lower_arm = r_hand = l_upper_leg = l_lower_leg = l_foot = 0
@@ -117,7 +93,7 @@ class GUI(tk.Tk):
         
         
         for sensor in self.sensorID_string_to_sensorNameDic:
-            self.buttonDic[sensor] = tk.IntVar()
+            self.sensorID_string_to_sensorNameDic[sensor] = tk.IntVar()
             aCheckButton = tk.Checkbutton(self, text=sensor,
                                           variable=self.sensorID_string_to_sensorNameDic[sensor])
             aCheckButton.grid(sticky='w')
@@ -129,9 +105,9 @@ class GUI(tk.Tk):
     def query_checkbuttons(self):
         for sensor, value in self.sensorID_string_to_sensorNameDic.items():
             state = value.get()
-                if state != 0:
-                    print(sensor)
-                    self.sensorID_string_to_sensorNameDic[sensor].set(0)
+            if state != 0:
+                print(sensor)
+                self.sensorID_string_to_sensorNameDic[sensor].set(0)
 
 
 
@@ -176,11 +152,11 @@ class GUI(tk.Tk):
             else:
                 for i in range(6): # Only checking the first six logical indexes
                     sens = device[i]
-                        if sens is not None:
-                            sensor_list.append(sens)
-                            newsensor=str(sens)
-                            tex.insert(tk.END,newsensor)
-                            tex.see(tk.END)
+                    if sens is not None:
+                        sensor_list.append(sens)
+                        newsensor=str(sens)
+                        tex.insert(tk.END,newsensor)
+                        tex.see(tk.END)
 
 
     #create a popup checkbox list for user to select desired sensors
@@ -218,7 +194,7 @@ class GUI(tk.Tk):
         global sensorID_string_to_sensorName
         
         for sensor in sensor_list:
-            if sensor_list[sensor].get()
+            if sensor_list[sensor].get():
                 chosen_sensor_list.append(sensor)
                 cmt=str(chosen_sensor_list)
                 tex.insert(tk.END,cmt)
@@ -262,7 +238,7 @@ class GUI(tk.Tk):
                                                     slot0='getRawAccelerometerData',
                                                     slot1='getBatteryPercentRemaining',
                                                     filter=chosen_sensor_list)
-                                                    ts_api.global_broadcaster.startStreaming(filter=chosen_sensor_list)
+        ts_api.global_broadcaster.startStreaming(filter=chosen_sensor_list)
 
         print("======MoCap connected success===============")
         note=("======MoCap connected success===============\n")
@@ -352,6 +328,31 @@ class GUI(tk.Tk):
         tex.see(tk.END)
 
         return reset
+
+    #Tool Bar
+    toolbar= Frame(self)
+    findmocapButton=Button(toolbar,text="Find Mocap Sensors", command=getSensors)
+    findmocapButton.pack(side=LEFT, padx=5, pady=50)
+    SensorButton=Button(toolbar,text="Choose Mocap Sensors", command=PopUp)
+    SensorButton.pack(side=LEFT, padx=5, pady=50)
+    mocapconnectButton=Button(toolbar,text="Mocap Connect", command=mocapconnect)
+    mocapconnectButton.pack(side=LEFT, padx=5, pady=50)
+    mocapdisconnectButton=Button(toolbar,text="Mocap Disconnect", command=mocapdisconnect)
+    disconnectButton.pack(side=LEFT, padx=5, pady=50)
+    fnirconnectButton=Button(toolbar,text="fNIR Connect", command=fnirconnect)
+    fnirconnectButton.pack(side=LEFT, padx=5, pady=50)
+    insertButton = Button(toolbar, text="All Start", command=start)
+    insertButton.pack(side=LEFT, padx=5, pady=50)
+    printButton= Button(toolbar, text="All Stop", command=stop)
+    printButton.pack(side=LEFT, padx=5, pady=50)
+    resetButton=Button(toolbar,text="All Reset", command=reset)
+    resetButton.pack(side=LEFT, padx=5, pady=50)
+    toolbar.pack(side=BOTTOM, fill=X)
+    
+    #root window
+    self.title("Graphical User Interface")
+    self.geometry("900x600")
+
 
 root=GUI()
 root.mainloop()
