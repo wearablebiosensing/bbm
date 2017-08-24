@@ -9,6 +9,9 @@ from threading import Thread
 from pylsl import StreamInlet, resolve_stream
 
 global all_list, sensor_list, chosen_sensor_list
+global process
+
+process = ""
 
 root=Tk()
 
@@ -26,6 +29,8 @@ def getSensors():
     
     all_list = []
     sensor_list = []
+    
+    process = "retrieving sensors"
     
     #find sensors available
     #put available com ports into list
@@ -63,6 +68,8 @@ def getSensors():
 
 #create a popup checkbox list for user to select desired sensors
 def PopUp():
+    
+    process = "selecting mocap sensors"
     
     global all_list, sensor_list, chosen_sensor_list
     
@@ -246,7 +253,7 @@ editMenu.add_command(label="Redo", command=nothing)
 
 
 #Status Bar
-status= Label(root,text="prototype..", bd=1, relief=SUNKEN, anchor=W)
+status= Label(root,text=process, bd=1, relief=SUNKEN, anchor=W)
 status.pack(side=BOTTOM, fill=X)
 
 #Tool Bar
@@ -272,7 +279,7 @@ toolbar.pack(side=BOTTOM, fill=X)
 
 #root window
 root.title("Graphical User Interface")
-root.geometry("700x600")
+root.geometry("900x600")
 
         
 root.mainloop()
