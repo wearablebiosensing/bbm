@@ -1,4 +1,9 @@
 from Tkinter import *
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> da258a3ffb9a558d81a4801493ab109156f9f766
 class Checkbar(Frame):
     def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
         Frame.__init__(self, parent)
@@ -8,6 +13,7 @@ class Checkbar(Frame):
             chk = Checkbutton(self, text=pick, variable=var)
             chk.pack(side=side, anchor=anchor, expand=YES)
             self.vars.append(var)
+<<<<<<< HEAD
     def state(self):
         return map((lambda var: var.get()), self.vars)
 
@@ -22,6 +28,26 @@ if __name__ == '__main__':
 def allstates():
     print(list(lng.state()), list(tgl.state()))
 
+=======
+
+    def state(self):
+        return map((lambda var: var.get()), self.vars)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    lng = Checkbar(root, ['Python', 'Ruby', 'Perl', 'C++'])
+    tgl = Checkbar(root, ['English', 'German'])
+    lng.pack(side=TOP, fill=X)
+    tgl.pack(side=LEFT)
+    lng.config(relief=GROOVE, bd=2)
+
+
+def allstates():
+    print(list(lng.state()), list(tgl.state()))
+
+
+>>>>>>> da258a3ffb9a558d81a4801493ab109156f9f766
 Button(root, text='Quit', command=root.quit).pack(side=RIGHT)
 Button(root, text='Peek', command=allstates).pack(side=RIGHT)
 root.mainloop()

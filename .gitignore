@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 pip-selfcheck.json
 lib/python2.7/warnings.py
 bin/activate
@@ -17,3 +18,7 @@ lib/python2.7/site.py
 lib/python2.7/site-packages/wheel/wininst2wheel.py
 lib/python2.7/sre_parse.py
 lib/python2.7/sre_compile.pyc
+=======
+WorkingCode_fnir-mocap/scripts and files/.DS_Store
+WorkingCode_fnir-mocap/.DS_Store
+>>>>>>> da258a3ffb9a558d81a4801493ab109156f9f766
