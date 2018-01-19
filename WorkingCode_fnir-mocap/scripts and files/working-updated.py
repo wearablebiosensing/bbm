@@ -8,7 +8,6 @@ import threading
 from threading import Thread
 from pylsl import StreamInlet, resolve_stream
 
-
 global all_list, sensor_list, chosen_sensor_list
 
 root=Tk()
@@ -178,6 +177,8 @@ def fnirStart():
         sample, timestamp = stream_inlet.pull_sample()
     
 def start():
+    global expStartTime
+    expStartTime = time.time()*1000
     Thread(target = mocapStart).start()
     #Thread(target = fnirStart).start()
     return True
@@ -194,8 +195,11 @@ def stop():
     for sens in sensor_list:
         open(sensorID_to_sensorName.get(str(sens)) + time.strftime("%Y%m%d-%H%M%S") + '.txt','w+').close()
         with open(sensorID_to_sensorName.get(str(sens)) + time.strftime("%Y%m%d-%H%M%S") + '.txt','a') as f:
+            startTime = sens.stream_data[0][0]/1000
             for data in sens.stream_data:
-                f.write(str(data)+'\n')
+                newTimestamp = data[0]/1000-startTime+expStartTime
+                newData = [newTimestamp, data[1]]
+                f.write(str(newData)+'\n')
     
     stopColl=str("======stop collection===========\n")
     tex.insert(tk.END,stopColl)
