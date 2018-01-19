@@ -1878,7 +1878,7 @@ class _TSSensor(_TSBase):
         return data
     
     ##  64(0x40)
-    def getAllRawComponentSensorData(self, timestamp=False):
+    def getAllRawComponentSensorData(self, timestamp=True):
         fail_byte, t_stamp, data = self.writeRead('getAllRawComponentSensorData')
         if timestamp:
             return (data, t_stamp)
